@@ -1,0 +1,450 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HTML笔记二 | 小修的技术修罗场</title><meta name="keywords" content="HTML"><meta name="author" content="小修"><meta name="copyright" content="小修"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="HTML要点：src进行调用时，”..”可以返回上一级。 第二章一、HTML标签的属性1、通用属性id: 用来给标签取一个唯一的名称。 class：给标签取一个类名。 style：用来设置该标签的行列样式。 title：提示。 2、自定义属性格式：data-* 作用：通常用来传值和图片的懒加载。 懒加载：&lt;img data-src&#x3D;&quot;图片地址&quot; alt&#x3D;&quot;提示&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML笔记二">
+<meta property="og:url" content="https://yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%BA%8C/index.html">
+<meta property="og:site_name" content="小修的技术修罗场">
+<meta property="og:description" content="HTML要点：src进行调用时，”..”可以返回上一级。 第二章一、HTML标签的属性1、通用属性id: 用来给标签取一个唯一的名称。 class：给标签取一个类名。 style：用来设置该标签的行列样式。 title：提示。 2、自定义属性格式：data-* 作用：通常用来传值和图片的懒加载。 懒加载：&lt;img data-src&#x3D;&quot;图片地址&quot; alt&#x3D;&quot;提示&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/%E5%B0%91%E5%A5%B3.jpg">
+<meta property="article:published_time" content="2021-02-08T06:27:21.000Z">
+<meta property="article:modified_time" content="2021-02-08T14:26:59.364Z">
+<meta property="article:author" content="小修">
+<meta property="article:tag" content="前端学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/%E5%B0%91%E5%A5%B3.jpg"><link rel="shortcut icon" href="/yangpaul123.github.io/img/favicon.png"><link rel="canonical" href="https://yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%BA%8C/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/yangpaul123.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?43478c9d8ab290fcbe0500c014b7cf15";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>var GLOBAL_CONFIG = { 
+  root: '/yangpaul123.github.io/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}
+
+// https://stackoverflow.com/questions/16839698/jquery-getscript-alternative-in-native-javascript
+const getScript = url => new Promise((resolve, reject) => {
+  const script = document.createElement('script')
+  script.src = url
+  script.async = true
+  script.onerror = reject
+  script.onload = script.onreadystatechange = function() {
+    const loadState = this.readyState
+    if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+    script.onload = script.onreadystatechange = null
+    resolve()
+  }
+  document.head.appendChild(script)
+})</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-08 22:26:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="http://q1.qlogo.cn/g?b=qq&amp;nk=465917277&amp;s=100" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/yangpaul123.github.io/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/yangpaul123.github.io/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/yangpaul123.github.io/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/comments/"><i class="fa-fw fab fa-weixin"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> β世界线</span></a></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 人生如戏</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/yangpaul123.github.io/photo/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page" href="/yangpaul123.github.io/video/"><i class="fa-fw fas fa-video"></i><span> 影像</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/%E5%B0%91%E5%A5%B3.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/yangpaul123.github.io/">小修的技术修罗场</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/comments/"><i class="fa-fw fab fa-weixin"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/archives/"><i class="fa-fw fas fa-archive"></i><span> β世界线</span></a></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 人生如戏</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/yangpaul123.github.io/photo/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page" href="/yangpaul123.github.io/video/"><i class="fa-fw fas fa-video"></i><span> 影像</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/yangpaul123.github.io/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">HTML笔记二</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-02-08T06:27:21.000Z" title="发表于 2021-02-08 14:27:21">2021-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-02-08T14:26:59.364Z" title="更新于 2021-02-08 22:26:59">2021-02-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/yangpaul123.github.io/categories/%E5%8E%86%E7%A8%8B/">历程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><p>要点：src进行调用时，”..”可以返回上一级。</p>
+<h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="一、HTML标签的属性"><a href="#一、HTML标签的属性" class="headerlink" title="一、HTML标签的属性"></a>一、HTML标签的属性</h2><h3 id="1、通用属性"><a href="#1、通用属性" class="headerlink" title="1、通用属性"></a>1、通用属性</h3><p>id: 用来给标签取一个唯一的名称。</p>
+<p>class：给标签取一个类名。</p>
+<p>style：用来设置该标签的行列样式。</p>
+<p>title：提示。</p>
+<h3 id="2、自定义属性"><a href="#2、自定义属性" class="headerlink" title="2、自定义属性"></a>2、自定义属性</h3><p>格式：data-*</p>
+<p>作用：通常用来传值和图片的懒加载。</p>
+<p>懒加载：<code>&lt;img data-src=&quot;图片地址&quot; alt=&quot;提示&quot;/&gt;</code>    </p>
+<p>传值：<code>&lt;p data-id=&quot;goodsid&quot;&gt;...&lt;/p&gt;</code></p>
+<h2 id="二、表格的绘制"><a href="#二、表格的绘制" class="headerlink" title="二、表格的绘制"></a>二、表格的绘制</h2><h3 id="1、绘制基本表格"><a href="#1、绘制基本表格" class="headerlink" title="1、绘制基本表格"></a>1、绘制基本表格</h3><p>格式： </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span> <span class="comment">&lt;!--行--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="comment">&lt;!--列--&gt;</span><span class="comment">&lt;!--表头有自动加粗功能--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">tb</span>&gt;</span><span class="tag">&lt;/<span class="name">tb</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tb</span>&gt;</span><span class="tag">&lt;/<span class="name">tb</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tb</span>&gt;</span><span class="tag">&lt;/<span class="name">tb</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>表格属性：</p>
+<p><img src="U%7DH0%5DE5T%607%7DWDB9LBQ%60%7BQYF.png"></p>
+<p><code>cellspacing可以使表格变成单线</code></p>
+<p><code>align可以使表格居中或左右，参数有：left,center,right</code></p>
+<p><code>valign使表格在垂直方向居中或左右，参数：bottom,top,middle</code></p>
+<h3 id="2、表格的跨行跨列"><a href="#2、表格的跨行跨列" class="headerlink" title="2、表格的跨行跨列"></a>2、表格的跨行跨列</h3><p> rowspan:跨行</p>
+<p> colspan:跨列</p>
+<p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">&quot;1&quot;</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">align</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>内容1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">colspan</span>=<span class="string">&quot;2&quot;</span>&gt;</span>内容1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>内容3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果展示：<img src="/image-20210208173003778.png" alt="image-20210208173003778"></p>
+<h3 id="3、完整表格的组成"><a href="#3、完整表格的组成" class="headerlink" title="3、完整表格的组成"></a>3、完整表格的组成</h3><p>caption（标题）、thead（）、tbody（）、tfoot（）</p>
+<p>完整表格memset语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">table[border&#x3D;1 width&#x3D;600 align&#x3D;center]&gt;(caption&#123;学生信息表&#125;)+(thead&gt;tr&gt;th*3)+(tbody&gt;tr&gt;td*3)+(tfoot&gt;tr&gt;td*3)</span><br></pre></td></tr></table></figure>
+<p><code>内容和属性可分别用&#123;&#125;与[]扩充</code>。</p>
+<h3 id="4、form表单标签"><a href="#4、form表单标签" class="headerlink" title="4、form表单标签"></a>4、form表单标签</h3><p>用来实现前后端交互的重要标签。</p>
+<h4 id="1-常用属性"><a href="#1-常用属性" class="headerlink" title="1.常用属性"></a>1.常用属性</h4><p>​        name：表单名称</p>
+<p>​        action：表单数据提交到哪里去（通常是一个后台文件名（.jsp/.php/.asp/.aspx/.py）或网址)。如果是#，表示提交到当前文件。</p>
+<p>​        method:前端提交数据到后端的方法，主要有get和post，默认为get。</p>
+<p>​        placeholder:文本框里提示输入的内容。</p>
+<p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">name</span>=<span class="string">&quot;stuInfo&quot;</span> <span class="attr">action</span>=<span class="string">&quot;#&quot;</span> <span class="attr">method</span>=<span class="string">&quot;get&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;userName&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入你的姓名&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果：<img src="LH695%7D%7B5W3%5DW%7B_KBA~QW%7BOD.png"></p>
+<h4 id="2-表单元素"><a href="#2-表单元素" class="headerlink" title="2.表单元素"></a>2.表单元素</h4><p>​    input:主要用来完成输入。</p>
+<p>​    type参数：<img src="/DK_LHOV8OAVZ%5B%5BAATVPB%60D4.png"></p>
+<p>​        a、text属性：    placeholder/name(传输后台区分表单)/minlength/maxlength（最大最小输入长度）/disabled/readonly（只读）/value（默认值）/pattern（正则匹配）</p>
+<p>​        b、password：与text的属性相同</p>
+<p>​        C、radio：单选钮，通常是两项以上。常用属性有：name（必须要有）/disabled/readonly（只读）/value（默认值）/checked(选中) </p>
+<p>代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">checked</span>&gt;</span>男</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;radio&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span>&gt;</span>女</span><br></pre></td></tr></table></figure>
+<p>​        D、checkbox:多选，name（必须要有）/disabled/readonly（只读）/value（默认值）/checked(选中) </p>
+<p>​        E、file：文件上传。</p>
+<p>​        F、button：普通按钮。通常用它调用脚本代码。属性：value（按钮的标题）/disable（失效）</p>
+<p>​        G、image：图片按钮。用法与button相同。有个特殊属性src（用它替换了value），也有提交功能。</p>
+<p>​        H、submit：提交按钮，用来将表单数据提交到后台。</p>
+<p>​        J、reset：重置按钮。将表单所有组件输入的内容全部清空。</p>
+<p>​    textarea: 文本域。（多行文本框），主要用来输入大量的内容。</p>
+<p>​    常用属性：name/id/cols/rows/placeholder/minlength/maxlength/required(必须输入)/value</p>
+<p>​    select:下拉列表框，默认用于单项选择。用option呈现每个选项。</p>
+<p>​    常用属性：multiple(多选)/size（调整选项展示个数。）</p>
+<p>​    代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">&quot;sex&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span>  <span class="attr">id</span>=<span class="string">&quot;sex&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;male&quot;</span>&gt;</span>男<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">&quot;female&quot;</span>&gt;</span>女<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    效果：<img src="/P9B%5D%7B9QSEZVC6W2CFKPUHFR.png"></p>
+<p>​    button: 普通按钮，具有提交功能。可以单独使用，可以不写在form元素中，写在form中具有提交功能。</p>
+<h3 id="5、iframe框架标签"><a href="#5、iframe框架标签" class="headerlink" title="5、iframe框架标签"></a>5、iframe框架标签</h3><p>​    iframe：框架集，用来将多个网页文件组合成一个文件。</p>
+<p>​    常用属性：</p>
+<p>​                name:框架名。</p>
+<p>​                src:引入的外部html文件。</p>
+<p>​                scrolling:滚动条。（参数yes/no/auto）</p>
+<p>​                width:宽度(%/px)</p>
+<p>​                height:高度(同上)</p>
+<p>​                frameborder:是否有边框(1/0)</p>
+<p>​                marginheiht:框架高度(%/px)</p>
+<p>​                marginwidth:框架宽度(%/px)</p>
+<p>​    注意：在实际开发中，尽量减少使用iframe，因为它破坏前进和后退功能，且不利于SEO。</p>
+<p>​    代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span> <span class="attr">name</span>=<span class="string">&quot;main&quot;</span> <span class="attr">scrolling</span>=<span class="string">&quot;auto&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;300px&quot;</span> <span class="attr">frameborder</span>=<span class="string">&quot;0&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>​    假设nav导航区点击标题，使内容在content区域显示，需要在超链接中加入属性 target=”main” ，这里的main为iframe框的name名。</p>
+<p>​    代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;content.html&quot;</span> <span class="attr">target</span>=<span class="string">&quot;main&quot;</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">小修</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%BA%8C/">https://yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%BA%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yangpaul123.github.io" target="_blank">小修的技术修罗场</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/yangpaul123.github.io/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/%E5%B0%91%E5%A5%B3.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%B8%80/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/192110-1568028070e1cc.jpg" onerror="onerror=null;src='/yangpaul123.github.io/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">HTML笔记一</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/yangpaul123.github.io/2021/02/08/HTML笔记一/" title="HTML笔记一"><img class="cover" src="https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/192110-1568028070e1cc.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-02-08</div><div class="title">HTML笔记一</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="http://q1.qlogo.cn/g?b=qq&amp;nk=465917277&amp;s=100" onerror="this.onerror=null;this.src='/yangpaul123.github.io/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">小修</div><div class="author-info__description">愿你我惜缘，随缘，不负遇见。</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/yangpaul123.github.io/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/yangpaul123.github.io/tags/"><div class="headline">标签</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/yangpaul123.github.io/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="http://wpa.qq.com/msgrd?v=3&amp;uin=465917277&amp;site=qq&amp;menu=yes"><i class="fab fa-qq"></i><span>点这里发起聊天~</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://steamcommunity.com/profiles/76561198183054737/friends/add" target="_blank" title="steam"><i class="fab fa-steam"></i></a><a class="social-icon" href="https://github.com/yangpaul123/yangpaul123.github.io.git" target="_blank" title="Gitee"><i class="fab fa-github-alt"></i></a><a class="social-icon" href="https://space.bilibili.com/4154501" target="_blank" title="哔哩哔哩"><i class="fab fa-simplybuilt"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">这里，将会记录着一个技术小白成为技术大佬的点点滴滴。3万个小时，你就是专家。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML"><span class="toc-number">1.</span> <span class="toc-text">HTML</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">第二章</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81HTML%E6%A0%87%E7%AD%BE%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">一、HTML标签的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E9%80%9A%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.1.</span> <span class="toc-text">1、通用属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="toc-number">2.1.2.</span> <span class="toc-text">2、自定义属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%A1%A8%E6%A0%BC%E7%9A%84%E7%BB%98%E5%88%B6"><span class="toc-number">2.2.</span> <span class="toc-text">二、表格的绘制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E7%BB%98%E5%88%B6%E5%9F%BA%E6%9C%AC%E8%A1%A8%E6%A0%BC"><span class="toc-number">2.2.1.</span> <span class="toc-text">1、绘制基本表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E8%A1%A8%E6%A0%BC%E7%9A%84%E8%B7%A8%E8%A1%8C%E8%B7%A8%E5%88%97"><span class="toc-number">2.2.2.</span> <span class="toc-text">2、表格的跨行跨列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AE%8C%E6%95%B4%E8%A1%A8%E6%A0%BC%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">2.2.3.</span> <span class="toc-text">3、完整表格的组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81form%E8%A1%A8%E5%8D%95%E6%A0%87%E7%AD%BE"><span class="toc-number">2.2.4.</span> <span class="toc-text">4、form表单标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B8%B8%E7%94%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">2.2.4.1.</span> <span class="toc-text">1.常用属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0"><span class="toc-number">2.2.4.2.</span> <span class="toc-text">2.表单元素</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81iframe%E6%A1%86%E6%9E%B6%E6%A0%87%E7%AD%BE"><span class="toc-number">2.2.5.</span> <span class="toc-text">5、iframe框架标签</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%BA%8C/" title="HTML笔记二"><img src="https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/%E5%B0%91%E5%A5%B3.jpg" onerror="this.onerror=null;this.src='/yangpaul123.github.io/img/404.jpg'" alt="HTML笔记二"/></a><div class="content"><a class="title" href="/yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%BA%8C/" title="HTML笔记二">HTML笔记二</a><time datetime="2021-02-08T06:27:21.000Z" title="发表于 2021-02-08 14:27:21">2021-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%B8%80/" title="HTML笔记一"><img src="https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/192110-1568028070e1cc.jpg" onerror="this.onerror=null;this.src='/yangpaul123.github.io/img/404.jpg'" alt="HTML笔记一"/></a><div class="content"><a class="title" href="/yangpaul123.github.io/2021/02/08/HTML%E7%AC%94%E8%AE%B0%E4%B8%80/" title="HTML笔记一">HTML笔记一</a><time datetime="2021-02-08T03:36:41.000Z" title="发表于 2021-02-08 11:36:41">2021-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/yangpaul123.github.io/2021/01/19/hello-world/" title="Hello World"><img src="https://i.loli.net/2021/01/27/pWTQdeYLmg6aDkX.jpg" onerror="this.onerror=null;this.src='/yangpaul123.github.io/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/yangpaul123.github.io/2021/01/19/hello-world/" title="Hello World">Hello World</a><time datetime="2021-01-19T14:00:45.107Z" title="发表于 2021-01-19 22:00:45">2021-01-19</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/%E5%B0%91%E5%A5%B3.jpg)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 小修</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/yangpaul123.github.io/js/utils.js"></script><script src="/yangpaul123.github.io/js/main.js"></script><script src="/yangpaul123.github.io/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    let initData = {
+      el: '#twikoo-wrap',
+      envId: 'twikoo-1gvz0d1eac328526',
+      region: ''
+    }
+
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    twikoo.init(initData)
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'twikoo-1gvz0d1eac328526',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+    content = content.replace(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png|webp)/g, '') // remove image link
+    content = content.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi, '') // remove url
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'twikoo-1gvz0d1eac328526',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(res), 10/(60*24))
+        generateHtml(res)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          let name = 'src'
+          if(false) {
+            name = 'data-lazy-src'
+          }
+          result += `<a href='${array[i].url + '#' + array[i].id}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url + '#' + array[i].id}'>${changeContent(array[i].commentText)}</a>
+        <div class='name'><span>${array[i].nick}</span><time> / ${btf.diffDate(array[i].created, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><div class="aplayer no-destroy" data-id="000PeZCQ1i4XVs" data-server="tencent" data-type="artist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="true" muted></div><script defer src="/live2d-widget/autoload.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})</script></div><script src="/yangpaul123.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/yangpaul123.github.io/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":400,"height":600},"mobile":{"show":false},"douban":null,"user":"https://www.douban.com/people/231359817/","builtin":false,"book":{"title":"This is my book title","quote":"This is my book quote","meta":true,"comments":true,"top_img":"https://cccccc.png","aside":true},"movie":{"title":"This is my movie title","quote":"This is my movie quote","meta":true,"comments":true,"top_img":"https://cccccc.png","aside":true},"game":{"title":"This is my game title","quote":"This is my game quote","meta":true,"comments":true,"top_img":"https://cccccc.png","aside":true},"timeout":10000,"log":false});</script></body></html>
