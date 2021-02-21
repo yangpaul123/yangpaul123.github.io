@@ -3139,28 +3139,28 @@ li.categoryBar-list-item:nth-child(4) {
   background: url('https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/234958-160502339805f5.jpg');
 }
 li.categoryBar-list-item:nth-child(5) {
-  background: url('https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/220650-1588514810c7b6.jpg');
+  background: url('https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/222240-160026616060e3.jpg');
 }
 li.categoryBar-list-item:nth-child(6) {
-  background: url('https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/220650-1588514810c7b6.jpg');
+  background: url('https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/232634-1590679594d2be.jpg');
 }
 li.categoryBar-list-item:nth-child(1)>span::after {
   content: '前端真的真的很有用' !important;
 }
 li.categoryBar-list-item:nth-child(2)>span::after {
-  content: 'CSS' !important;
+  content: 'Python针布戳' !important;
 }
 li.categoryBar-list-item:nth-child(3)>span::after {
-  content: '吾将上下而求索' !important;
+  content: 'CSS' !important;
 }
 li.categoryBar-list-item:nth-child(4)>span::after {
-  content: '感想碎片寄存器' !important;
+  content: '吾将上下而求索' !important;
 }
 li.categoryBar-list-item:nth-child(5)>span::after {
-  content: '嗯，做了哪些项目呢' !important;
+  content: '感想碎片寄存器' !important;
 }
 li.categoryBar-list-item:nth-child(6)>span::after {
-  content: 'Python针布戳' !important;
+  content: '嗯，做了哪些项目呢' !important;
 }
 li.categoryBar-list-item {
   width: 32.3% !important;
