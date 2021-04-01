@@ -3144,6 +3144,9 @@ li.categoryBar-list-item:nth-child(5) {
 li.categoryBar-list-item:nth-child(6) {
   background: url('https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/232634-1590679594d2be.jpg');
 }
+li.categoryBar-list-item:nth-child(7) {
+  background: url('https://cdn.jsdelivr.net/gh/yangpaul123/CDN/img/234834-15841145148a09.jpg');
+}
 li.categoryBar-list-item:nth-child(1)>span::after {
   content: '前端真的真的很有用' !important;
 }
@@ -3157,9 +3160,12 @@ li.categoryBar-list-item:nth-child(4)>span::after {
   content: '吾将上下而求索' !important;
 }
 li.categoryBar-list-item:nth-child(5)>span::after {
-  content: '感想碎片寄存器' !important;
+  content: '我们正处于第四次工业革命的开端' !important;
 }
 li.categoryBar-list-item:nth-child(6)>span::after {
+  content: '感想碎片寄存器' !important;
+}
+li.categoryBar-list-item:nth-child(7)>span::after {
   content: '嗯，做了哪些项目呢' !important;
 }
 li.categoryBar-list-item {
