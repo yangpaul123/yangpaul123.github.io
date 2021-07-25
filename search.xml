@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>C++学习与遗忘整理</title>
+      <link href="/yangpaul123.github.io/2021/07/25/C++%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/"/>
+      <url>/yangpaul123.github.io/2021/07/25/C++%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-学习与遗忘整理"><a href="#C-学习与遗忘整理" class="headerlink" title="C++学习与遗忘整理"></a>C++学习与遗忘整理</h1><h2 id="一、C-基础，遗忘整理"><a href="#一、C-基础，遗忘整理" class="headerlink" title="一、C++基础，遗忘整理"></a>一、C++基础，遗忘整理</h2><h3 id="1-常量"><a href="#1-常量" class="headerlink" title="1.常量"></a>1.常量</h3><ol><li>#define** 宏常量： <code>#define 常量名 常量值</code><ul><li>通常在文件上方定义，表示一个常量</li></ul></li><li><strong>const</strong>修饰的变量 <code>const 数据类型 常量名 = 常量值</code><ul><li>通常在变量定义前加关键字const，修饰该变量为常量，不可修改</li></ul></li></ol><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> day 7</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;一周里总共有 &quot;</span> &lt;&lt; day &lt;&lt; <span class="string">&quot; 天&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">//day = 8;  //报错，宏常量不可以修改</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2、const修饰变量</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> month = <span class="number">12</span>;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;一年里总共有 &quot;</span> &lt;&lt; month &lt;&lt; <span class="string">&quot; 个月份&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">//month = 24; //报错，常量是不可以修改的</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>理解：  #define 后面不需要跟“;”号，放在文件头，const一搬放在程序中不可修改，注意语法。</p><h3 id="2-常用关键字"><a href="#2-常用关键字" class="headerlink" title="2.常用关键字"></a>2.常用关键字</h3><p><img src="https://i.loli.net/2021/05/24/p2b1ixTctPXoaJA.png"></p><h3 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3.数据类型"></a>3.数据类型</h3><h4 id="1-整型"><a href="#1-整型" class="headerlink" title="1.整型"></a>1.整型</h4><p><img src="https://i.loli.net/2021/06/16/Ppm4u7BqigvUa2W.png"></p><h4 id="2-浮点型"><a href="#2-浮点型" class="headerlink" title="2.浮点型"></a>2.浮点型</h4><p>float：4字节</p><p>double：8字节</p><h4 id="3-字符型"><a href="#3-字符型" class="headerlink" title="3.字符型"></a>3.字符型</h4><p>1字节</p><h4 id="4-转义字符"><a href="#4-转义字符" class="headerlink" title="4.转义字符"></a>4.转义字符</h4><p><img src="https://i.loli.net/2021/06/16/g1VM7If2HXhmopU.png"></p><h4 id="5-字符串型"><a href="#5-字符串型" class="headerlink" title="5.字符串型"></a>5.字符串型</h4><p><img src="https://i.loli.net/2021/06/16/VpO6CjLHewyhYT8.png"></p><p><img src="https://i.loli.net/2021/06/16/hcG8QsemJ5A9O2g.png"></p><p><img src="https://i.loli.net/2021/06/16/KTX2h61DZSA8N9I.png"></p><h4 id="6-布尔类型"><a href="#6-布尔类型" class="headerlink" title="6.布尔类型"></a>6.布尔类型</h4><p>1个字节</p><h4 id="7-数据输入"><a href="#7-数据输入" class="headerlink" title="7.数据输入"></a>7.数据输入</h4><p>关键字：cin  </p><p>cin&gt;&gt;a;</p><h3 id="4-定义数组"><a href="#4-定义数组" class="headerlink" title="4.定义数组"></a>4.定义数组</h3><p>一维数组 ：<img src="https://i.loli.net/2021/06/16/QDupn5HMI1oXCYl.png"></p><p>二维数组：<img src="https://i.loli.net/2021/06/17/sOuBt6T8YMZP21X.png"></p><h3 id="5-函数"><a href="#5-函数" class="headerlink" title="5.函数"></a>5.函数</h3><h4 id="1-实参与形参"><a href="#1-实参与形参" class="headerlink" title="1.实参与形参"></a>1.实参与形参</h4><p>被调用的函数括号里的叫做形参，主函数main里定义的参数是实参，当被调用的函数的形参发生改变时，主函数的实参并不发生改变。</p><h4 id="2-函数声明"><a href="#2-函数声明" class="headerlink" title="2.函数声明"></a>2.函数声明</h4><p>被调用函数如果在主函数之后，则要在主函数前加一个声明，反之则不需要加。</p><p>声明：数据类型 函数名 （）;</p><h4 id="3-函数的分文件编写习惯"><a href="#3-函数的分文件编写习惯" class="headerlink" title="3.函数的分文件编写习惯"></a>3.函数的分文件编写习惯</h4><p>在头文件里写声明，在原文件里写定义。</p><h3 id="6-指针"><a href="#6-指针" class="headerlink" title="6.指针"></a>6.指针</h3><h4 id="1-指针在不同位数的操作系统的占用空间"><a href="#1-指针在不同位数的操作系统的占用空间" class="headerlink" title="1.指针在不同位数的操作系统的占用空间"></a>1.指针在不同位数的操作系统的占用空间</h4><p>32位：4个字节</p><p>64位：8个字节</p><h4 id="2-const常量指针"><a href="#2-const常量指针" class="headerlink" title="2.const常量指针"></a>2.const常量指针</h4><p>const int *p =&a;</p><p>只可以修改常量指针的地址（即指向），而不可以修改其值。</p><h4 id="3-const指针常量"><a href="#3-const指针常量" class="headerlink" title="3.const指针常量"></a>3.const指针常量</h4><p>int * const p = a;</p><p>只可以修改其值，而不可以修改指针的地址。</p><p>const int* const p = a;   这样的两者都不可以修改。</p><h4 id="4-const放在调用函数的参数之前"><a href="#4-const放在调用函数的参数之前" class="headerlink" title="4.const放在调用函数的参数之前"></a>4.const放在调用函数的参数之前</h4><p>则无论是值传递还是地址传递，都不可修改实参的值。</p><h3 id="7-传递方式"><a href="#7-传递方式" class="headerlink" title="7.传递方式"></a>7.传递方式</h3><p>1.值传递：实参的值传到形参</p><p>2.地址传递：被调用函数的形参是指针，则调用函数时，需要传地址给形参。</p><h3 id="8-结构体"><a href="#8-结构体" class="headerlink" title="8.结构体"></a>8.结构体</h3><p>语法1： struct 类型名 { 成员列表 }   PS:只定义了一个结构体类型，并没有创建具体个体。</p><p>语法2： struct 类型名 变量名= { 成员列表的具体值}   PS: 创建了具体的个体。d</p><h4 id="1-结构体数组"><a href="#1-结构体数组" class="headerlink" title="1.结构体数组"></a>1.结构体数组</h4><p>语法： struct 类型名 数组名[个数] ；</p><h4 id="2-结构体指针"><a href="#2-结构体指针" class="headerlink" title="2.结构体指针"></a>2.结构体指针</h4><p>  创建了一个具体结构体个体之后，如果需要用指针指向这个个体，则需要 用    结构体名 *指针变量 来指向这个个体。</p><h4 id="3-结构体做函数参数的两种传递方式"><a href="#3-结构体做函数参数的两种传递方式" class="headerlink" title="3.结构体做函数参数的两种传递方式"></a>3.结构体做函数参数的两种传递方式</h4><p>1.值传递    函数参数 类型名  变量名</p><p>2.地址传递   函数参数    类型名 *指针名       在主函数调用时，需要加取址符。</p><h4 id="4-结构体案例1-教师带学生"><a href="#4-结构体案例1-教师带学生" class="headerlink" title="4,结构体案例1  教师带学生"></a>4,结构体案例1  教师带学生</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//创建结构体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="built_in">string</span> sName;</span><br><span class="line"><span class="keyword">int</span> score;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">teacher</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="built_in">string</span> tName;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">student</span> <span class="title">sArray</span>[5];</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">allocateSpace</span><span class="params">(struct teacher tArray[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line"><span class="built_in">string</span> NameSeed = <span class="string">&quot;ABCDE&quot;</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">tArray[i].tName = <span class="string">&quot;Teacher_&quot;</span>;</span><br><span class="line">tArray[i].tName += NameSeed[i];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) &#123;</span><br><span class="line">tArray[i].sArray[j].sName = <span class="string">&quot;Student_&quot;</span>;</span><br><span class="line">tArray[i].sArray[j].sName += NameSeed[j];</span><br><span class="line">tArray[i].sArray[j].score = <span class="number">60</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printInfo</span><span class="params">(struct teacher tArrary[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;老师姓名:&quot;</span> &lt;&lt; tArrary[i].tName &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">teacher</span> <span class="title">tArray</span>[3];</span></span><br><span class="line"><span class="keyword">int</span> len = <span class="keyword">sizeof</span>(tArray) / <span class="keyword">sizeof</span>(tArray[<span class="number">0</span>]);</span><br><span class="line">allocateSpace(tArray, len);</span><br><span class="line">printInfo(tArray, len);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">system(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>OpenCV C++</title>
       <link href="/yangpaul123.github.io/2021/04/29/OpenCV-C++/"/>
       <url>/yangpaul123.github.io/2021/04/29/OpenCV-C++/</url>
@@ -21,6 +46,8 @@
         <tags>
             
             <tag> OpenCV </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -190,10 +217,16 @@
       
       <categories>
           
-          <category> Python </category>
+          <category> 语言 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
       
     </entry>
     

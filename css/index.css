@@ -3151,19 +3151,19 @@ li.categoryBar-list-item:nth-child(1)>span::after {
   content: '前端真的真的很有用' !important;
 }
 li.categoryBar-list-item:nth-child(2)>span::after {
-  content: 'Python针布戳' !important;
-}
-li.categoryBar-list-item:nth-child(3)>span::after {
   content: 'CSS' !important;
 }
-li.categoryBar-list-item:nth-child(4)>span::after {
+li.categoryBar-list-item:nth-child(3)>span::after {
   content: '吾将上下而求索' !important;
 }
-li.categoryBar-list-item:nth-child(5)>span::after {
+li.categoryBar-list-item:nth-child(4)>span::after {
   content: '我们正处于第四次工业革命的开端' !important;
 }
-li.categoryBar-list-item:nth-child(6)>span::after {
+li.categoryBar-list-item:nth-child(5)>span::after {
   content: '感想碎片寄存器' !important;
+}
+li.categoryBar-list-item:nth-child(6)>span::after {
+  content: 'Python针布戳' !important;
 }
 li.categoryBar-list-item:nth-child(7)>span::after {
   content: '嗯，做了哪些项目呢' !important;
